@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { ConnectionStatus } from "@/components/connection-status";
+import { SignalIcon } from "@/components/icons/signal-icon";
 
 const navItems = [
   { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
@@ -50,7 +51,10 @@ export function Sidebar({ open, onClose }: SidebarProps) {
         )}
       >
         <div className="flex h-14 items-center justify-between border-b border-gray-200 px-4">
-          <h1 className="text-lg font-semibold text-gray-900">Signal Admin</h1>
+          <h1 className="flex items-center gap-2 text-lg font-semibold text-gray-900">
+            <SignalIcon className="h-6 w-6 shrink-0" />
+            Signal Admin
+          </h1>
           <button
             onClick={onClose}
             className="rounded p-1 text-gray-400 hover:text-gray-600 lg:hidden"
