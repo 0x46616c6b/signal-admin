@@ -1,6 +1,6 @@
 export interface Account {
   number: string;
-  uuid: string;
+  uuid?: string;
   deviceId?: number;
   registered?: boolean;
 }
