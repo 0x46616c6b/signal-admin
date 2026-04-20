@@ -11,6 +11,7 @@ import {
   UserCircle,
   Shield,
   Smile,
+  KeyRound,
   X,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -19,6 +20,7 @@ import { SignalIcon } from "@/components/icons/signal-icon";
 
 const navItems = [
   { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
+  { href: "/accounts", label: "Accounts", icon: KeyRound },
   { href: "/messages", label: "Messages", icon: MessageSquare },
   { href: "/contacts", label: "Contacts", icon: Users },
   { href: "/groups", label: "Groups", icon: UsersRound },
