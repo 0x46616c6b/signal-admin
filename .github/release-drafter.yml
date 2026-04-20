@@ -28,6 +28,7 @@ version-resolver:
     labels:
       - minor
       - feature
+      - enhancement
   patch:
     labels:
       - patch
@@ -36,6 +37,7 @@ version-resolver:
       - bug
       - chore
       - maintenance
+      - dependencies
   default: patch
 
 template: |
