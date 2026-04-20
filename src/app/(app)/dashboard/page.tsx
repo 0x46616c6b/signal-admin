@@ -38,7 +38,7 @@ function StatCard({
 }
 
 export default function DashboardPage() {
-  const { serverUrl, isConnected } = useServerConfig();
+  const { isConnected } = useServerConfig();
   const { accounts, selectedAccount } = useAccounts();
   const { data: contacts } = useRpc<Contact[]>("listContacts", {
     allRecipients: false,
@@ -55,9 +55,7 @@ export default function DashboardPage() {
             {isConnected ? (
               <>
                 <CheckCircle className="h-5 w-5 text-green-500" />
-                <span className="text-sm text-green-700">
-                  Connected to {serverUrl}
-                </span>
+                <span className="text-sm text-green-700">Connected</span>
               </>
             ) : (
               <>

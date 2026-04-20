@@ -1,20 +1,5 @@
-"use client";
-
-import { useEffect } from "react";
-import { useRouter } from "next/navigation";
-import { useServerConfig } from "@/contexts/server-config-context";
+import { redirect } from "next/navigation";
 
 export default function Home() {
-  const { serverUrl } = useServerConfig();
-  const router = useRouter();
-
-  useEffect(() => {
-    if (serverUrl) {
-      router.replace("/dashboard");
-    } else {
-      router.replace("/settings");
-    }
-  }, [serverUrl, router]);
-
-  return null;
+  redirect("/dashboard");
 }

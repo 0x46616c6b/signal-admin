@@ -1,17 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
-import { parseServerUrl } from "@/lib/proxy-utils";
+import { getSignalCliUrl } from "@/lib/proxy-utils";
 
 export async function POST(request: NextRequest) {
-  const rawUrl = request.headers.get("X-Signal-Server");
-  if (!rawUrl) {
-    return NextResponse.json(
-      { error: "Missing X-Signal-Server header" },
-      { status: 400 },
-    );
-  }
-
   try {
-    const { url, authHeader } = parseServerUrl(rawUrl);
+    const { url, authHeader } = getSignalCliUrl();
     const headers: Record<string, string> = {
       "Content-Type": "application/json",
     };

@@ -17,7 +17,6 @@ export function useRpc<T>(
 
   const execute = useCallback(
     async (overrideParams?: Record<string, unknown>) => {
-      if (!rpcClient) return null;
       setIsLoading(true);
       setError(null);
       try {
@@ -42,10 +41,10 @@ export function useRpc<T>(
   );
 
   useEffect(() => {
-    if (autoFetch && rpcClient && selectedAccount) {
+    if (autoFetch && selectedAccount) {
       execute();
     }
-  }, [autoFetch, rpcClient, selectedAccount, execute]);
+  }, [autoFetch, selectedAccount, execute]);
 
   return { data, error, isLoading, execute, setData };
 }
@@ -58,7 +57,6 @@ export function useRpcAction<T>() {
 
   const execute = useCallback(
     async (method: string, params?: Record<string, unknown>) => {
-      if (!rpcClient) throw new Error("Not connected");
       setIsLoading(true);
       setError(null);
       try {

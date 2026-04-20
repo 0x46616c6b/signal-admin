@@ -11,7 +11,6 @@ import {
   UserCircle,
   Shield,
   Smile,
-  Settings,
   X,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -85,21 +84,8 @@ export function Sidebar({ open, onClose }: SidebarProps) {
           </ul>
         </nav>
 
-        <div className="border-t border-gray-200 p-3 space-y-2">
+        <div className="border-t border-gray-200 p-3">
           <ConnectionStatus />
-          <Link
-            href="/settings"
-            onClick={onClose}
-            className={cn(
-              "flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors",
-              pathname === "/settings"
-                ? "bg-blue-50 text-blue-700"
-                : "text-gray-700 hover:bg-gray-100",
-            )}
-          >
-            <Settings className="h-4 w-4 shrink-0" />
-            Settings
-          </Link>
         </div>
       </aside>
     </>

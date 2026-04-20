@@ -32,7 +32,6 @@ export function AccountProvider({ children }: { children: ReactNode }) {
   const [isLoading, setIsLoading] = useState(false);
 
   const refreshAccounts = useCallback(async () => {
-    if (!rpcClient) return;
     setIsLoading(true);
     try {
       const result = await rpcClient.call<Account[]>("listAccounts");

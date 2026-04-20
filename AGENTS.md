@@ -24,9 +24,9 @@ The browser never calls signal-cli directly. Proxy routes handle CORS and Basic 
 |---|---|
 | `src/lib/rpc-client.ts` | JSON-RPC 2.0 client class, sends requests via `/api/rpc` proxy |
 | `src/lib/sse-client.ts` | EventSource wrapper, connects via `/api/events` proxy |
-| `src/lib/proxy-utils.ts` | Extracts Basic Auth credentials from URLs for proxy routes |
+| `src/lib/proxy-utils.ts` | Reads `SIGNAL_CLI_URL` env var, extracts Basic Auth credentials |
 | `src/lib/types.ts` | TypeScript types for all signal-cli entities |
-| `src/contexts/server-config-context.tsx` | Server URL (localStorage), connection state, health checks |
+| `src/contexts/server-config-context.tsx` | Connection state, health checks, provides `rpcClient` |
 | `src/contexts/account-context.tsx` | Account list, selected account (from `listAccounts` RPC) |
 | `src/hooks/use-rpc.ts` | `useRpc` (auto-fetch) and `useRpcAction` (manual trigger) hooks |
 | `src/hooks/use-sse.ts` | SSE subscription hook, manages EventSource lifecycle |
@@ -35,7 +35,7 @@ The browser never calls signal-cli directly. Proxy routes handle CORS and Basic 
 
 ### State Management
 
-- `ServerConfigContext` — server URL (persisted in localStorage), `isConnected`, `rpcClient` instance
+- `ServerConfigContext` — `isConnected`, `isChecking`, `checkConnection`, `rpcClient` instance
 - `AccountContext` — `accounts[]`, `selectedAccount` (phone number)
 - `useRpc` hook auto-injects `{ account: selectedAccount }` into every RPC call
 - Per-page data is local state, no global cache

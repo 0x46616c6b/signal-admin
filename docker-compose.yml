@@ -1,0 +1,20 @@
+services:
+  signal-admin:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - SIGNAL_CLI_URL=http://signal-cli:8080
+    depends_on:
+      - signal-cli
+
+  signal-cli:
+    image: registry.gitlab.com/packaging/signal-cli/signal-cli-native:latest
+    command: ["--config", "/data", "daemon", "--http=0.0.0.0:8080", "--receive-mode=on-connection"]
+    volumes:
+      - signal-cli-data:/data
+    ports:
+      - "8080:8080"
+
+volumes:
+  signal-cli-data:

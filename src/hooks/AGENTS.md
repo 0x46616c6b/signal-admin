@@ -13,4 +13,4 @@ The `execute()` function accepts `overrideParams` that merge on top of the defau
 
 ## use-sse.ts
 
-Manages an `SSEClient` lifecycle tied to `serverUrl` and `selectedAccount`. Reconnects automatically when the account changes. Events are stored in a FIFO buffer (max 500). Not persisted.
+Manages an `SSEClient` lifecycle tied to `selectedAccount`. Reconnects automatically when the account changes. Events are stored in a FIFO buffer (max 500). Not persisted.

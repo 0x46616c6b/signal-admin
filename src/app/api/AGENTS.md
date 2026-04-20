@@ -4,17 +4,16 @@ These Route Handlers are **server-side proxies** that forward requests from the 
 
 ## Security
 
-- The signal-cli server URL (potentially including credentials) is passed from the client via `X-Signal-Server` header (RPC) or `?server=` query param (SSE)
-- `parseServerUrl()` from `src/lib/proxy-utils.ts` extracts credentials and builds an `Authorization: Basic` header
+- The signal-cli server URL is read from the `SIGNAL_CLI_URL` environment variable (server-side only)
+- `getSignalCliUrl()` from `src/lib/proxy-utils.ts` reads the env var and extracts credentials via `parseServerUrl()`
 - Credentials are **never** returned to the client — they are only used server-side for the upstream request
 
 ## Adding a new proxy route
 
 1. Create `src/app/api/<name>/route.ts`
-2. Read the server URL from headers/params
-3. Use `parseServerUrl()` to extract auth
-4. Forward the request to signal-cli and stream/return the response
-5. Return `502` with a descriptive message on upstream failure
+2. Use `getSignalCliUrl()` to get the parsed URL and auth header
+3. Forward the request to signal-cli and stream/return the response
+4. Return `502` with a descriptive message on upstream failure
 
 ## SSE Route (`events/route.ts`)
 

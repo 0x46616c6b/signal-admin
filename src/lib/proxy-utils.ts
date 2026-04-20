@@ -1,3 +1,11 @@
+export function getSignalCliUrl(): { url: string; authHeader: string | null } {
+  const raw = process.env.SIGNAL_CLI_URL;
+  if (!raw) {
+    throw new Error("SIGNAL_CLI_URL environment variable is not set");
+  }
+  return parseServerUrl(raw);
+}
+
 /**
  * Parse a server URL that may contain Basic Auth credentials.
  * Input:  "http://user:pass@host:8080"

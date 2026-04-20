@@ -22,8 +22,6 @@ export class RpcError extends Error {
 }
 
 export class RpcClient {
-  constructor(private serverUrl: string) {}
-
   async call<T>(
     method: string,
     params?: Record<string, unknown>,
@@ -31,10 +29,7 @@ export class RpcClient {
     const id = crypto.randomUUID();
     const response = await fetch("/api/rpc", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "X-Signal-Server": this.serverUrl,
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ jsonrpc: "2.0", method, params, id }),
     });
 
@@ -55,10 +50,7 @@ export class RpcClient {
     try {
       const response = await fetch("/api/rpc", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "X-Signal-Server": this.serverUrl,
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           jsonrpc: "2.0",
           method: "listAccounts",

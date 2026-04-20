@@ -1,18 +1,13 @@
 import { NextRequest } from "next/server";
-import { parseServerUrl } from "@/lib/proxy-utils";
+import { getSignalCliUrl } from "@/lib/proxy-utils";
 
 export const dynamic = "force-dynamic";
 
 export async function GET(request: NextRequest) {
-  const rawUrl = request.nextUrl.searchParams.get("server");
   const account = request.nextUrl.searchParams.get("account");
 
-  if (!rawUrl) {
-    return new Response("Missing server parameter", { status: 400 });
-  }
-
   try {
-    const { url, authHeader } = parseServerUrl(rawUrl);
+    const { url, authHeader } = getSignalCliUrl();
     let targetUrl = `${url}/api/v1/events`;
     if (account) targetUrl += `?account=${encodeURIComponent(account)}`;
 

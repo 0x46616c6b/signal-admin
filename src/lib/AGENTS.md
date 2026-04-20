@@ -3,7 +3,6 @@
 ## rpc-client.ts
 
 JSON-RPC 2.0 client. Sends requests to `/api/rpc` (the Next.js proxy), not directly to signal-cli.
-The `X-Signal-Server` header carries the full server URL (including any Basic Auth credentials).
 
 Error hierarchy:
 - `RpcTransportError` — network/HTTP failure (server unreachable, 500, etc.)
@@ -11,7 +10,7 @@ Error hierarchy:
 
 ## sse-client.ts
 
-Wraps `EventSource` for the SSE stream. Connects to `/api/events?server=...&account=...`.
+Wraps `EventSource` for the SSE stream. Connects to `/api/events?account=...`.
 Signal-cli sends JSON-RPC notifications as SSE events. The envelope is at `data.params.envelope` or `data.params`.
 
 ## types.ts
@@ -21,5 +20,6 @@ Type names match the signal-cli JSON-RPC documentation (camelCase params, not ke
 
 ## proxy-utils.ts
 
-Server-side only (uses `Buffer`). Parses `http://user:pass@host:port` into a clean URL + `Authorization` header.
+Server-side only (uses `Buffer`). Reads the signal-cli URL from the `SIGNAL_CLI_URL` environment variable.
+Parses `http://user:pass@host:port` into a clean URL + `Authorization` header.
 Used by both proxy Route Handlers.

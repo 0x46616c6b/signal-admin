@@ -17,14 +17,19 @@ It communicates with the signal-cli JSON-RPC 2.0 HTTP API through Next.js proxy 
 - `npm run dev` — Start dev server (Turbopack)
 - `npm run build` — Production build
 - `npm run lint` — ESLint
+- `docker compose up` — Run with Docker (signal-admin + signal-cli)
+
+## Environment Variables
+
+- `SIGNAL_CLI_URL` — URL of the signal-cli HTTP daemon (e.g. `http://localhost:8080`). Basic Auth supported (`http://user:pass@host:port`).
 
 ## Architecture
 
 - Pure client-side SPA — all pages are `"use client"`, no SSR data fetching
-- signal-cli server URL is stored in `localStorage`, configured via `/settings`
-- Basic Auth in the URL is supported (`http://user:pass@host:port`)
+- signal-cli server URL is configured via `SIGNAL_CLI_URL` environment variable (server-side only)
 - Two React Contexts provide global state: `ServerConfigContext` (connection) and `AccountContext` (multi-account)
 - CORS is solved via Next.js Route Handlers (`/api/rpc`, `/api/events`) that proxy requests server-side
+- Docker-ready with `output: "standalone"` in Next.js config
 
 ## Conventions
 

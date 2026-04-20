@@ -2,21 +2,19 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { SSEClient } from "@/lib/sse-client";
-import { useServerConfig } from "@/contexts/server-config-context";
 import { useAccounts } from "@/contexts/account-context";
 import type { SignalEnvelope } from "@/lib/types";
 
 const MAX_EVENTS = 500;
 
 export function useSSE() {
-  const { serverUrl } = useServerConfig();
   const { selectedAccount } = useAccounts();
   const [events, setEvents] = useState<SignalEnvelope[]>([]);
   const [isConnected, setIsConnected] = useState(false);
   const clientRef = useRef<SSEClient | null>(null);
 
   useEffect(() => {
-    if (!serverUrl || !selectedAccount) return;
+    if (!selectedAccount) return;
 
     const client = new SSEClient();
     clientRef.current = client;
@@ -28,7 +26,7 @@ export function useSSE() {
       });
     });
 
-    client.connect(serverUrl, selectedAccount);
+    client.connect(selectedAccount);
 
     const checkInterval = setInterval(() => {
       setIsConnected(client.isConnected);
@@ -40,7 +38,7 @@ export function useSSE() {
       client.disconnect();
       clientRef.current = null;
     };
-  }, [serverUrl, selectedAccount]);
+  }, [selectedAccount]);
 
   const clear = useCallback(() => {
     setEvents([]);

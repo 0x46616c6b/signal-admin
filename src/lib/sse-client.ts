@@ -11,13 +11,14 @@ export class SSEClient {
     return this._isConnected;
   }
 
-  connect(serverUrl: string, account?: string) {
+  connect(account?: string) {
     this.disconnect();
 
-    const params = new URLSearchParams({ server: serverUrl });
+    const params = new URLSearchParams();
     if (account) params.set("account", account);
 
-    this.eventSource = new EventSource(`/api/events?${params}`);
+    const qs = params.toString();
+    this.eventSource = new EventSource(`/api/events${qs ? `?${qs}` : ""}`);
 
     this.eventSource.onopen = () => {
       this._isConnected = true;
