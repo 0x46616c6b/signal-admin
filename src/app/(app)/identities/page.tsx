@@ -13,7 +13,7 @@ export default function IdentitiesPage() {
   );
   const { execute: rpcAction } = useRpcAction();
 
-  const handleTrust = async (recipient: string, safetyNumber: string) => {
+  const handleTrust = async (recipient: string) => {
     try {
       await rpcAction("trust", {
         recipient,
@@ -111,7 +111,7 @@ export default function IdentitiesPage() {
                   {!isTrusted && (
                     <button
                       onClick={() =>
-                        handleTrust(id, identity.safetyNumber ?? "")
+                        handleTrust(id)
                       }
                       className="rounded-md border border-gray-300 px-3 py-1.5 text-xs font-medium text-gray-700 hover:bg-gray-50"
                     >

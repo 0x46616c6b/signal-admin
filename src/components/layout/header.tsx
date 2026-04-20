@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Menu, Trash2, Loader2 } from "lucide-react";
+import { Menu, Trash2 } from "lucide-react";
 import { toast } from "sonner";
 import { useAccounts } from "@/contexts/account-context";
 import { useServerConfig } from "@/contexts/server-config-context";

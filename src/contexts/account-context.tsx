@@ -55,10 +55,38 @@ export function AccountProvider({ children }: { children: ReactNode }) {
   }, [rpcClient]);
 
   useEffect(() => {
-    if (isConnected) {
-      refreshAccounts();
-    }
-  }, [isConnected, refreshAccounts]);
+    if (!isConnected) return;
+    let active = true;
+
+    const load = async () => {
+      setIsLoading(true);
+      try {
+        const result = await rpcClient.call<Account[]>("listAccounts");
+        if (!active) return;
+        setAccounts(result ?? []);
+        const stored = localStorage.getItem(SELECTED_ACCOUNT_KEY);
+        if (result?.length) {
+          if (stored && result.some((a) => a.number === stored)) {
+            setSelectedAccountState(stored);
+          } else {
+            setSelectedAccountState(result[0].number);
+          }
+        }
+      } catch {
+        if (active) setAccounts([]);
+      } finally {
+        if (active) {
+          setIsLoading(false);
+          setHasLoaded(true);
+        }
+      }
+    };
+
+    load();
+    return () => {
+      active = false;
+    };
+  }, [isConnected, rpcClient]);
 
   const setSelectedAccount = useCallback((number: string) => {
     localStorage.setItem(SELECTED_ACCOUNT_KEY, number);

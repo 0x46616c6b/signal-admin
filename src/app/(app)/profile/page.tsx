@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { toast } from "sonner";
 import { AppShell } from "@/components/layout/app-shell";
 import { useRpcAction } from "@/hooks/use-rpc";
@@ -9,19 +9,17 @@ import { Loader2 } from "lucide-react";
 
 export default function ProfilePage() {
   const { selectedAccount } = useAccounts();
+
+  return <ProfileForm key={selectedAccount} />;
+}
+
+function ProfileForm() {
   const { execute: rpcAction, isLoading } = useRpcAction();
 
   const [givenName, setGivenName] = useState("");
   const [familyName, setFamilyName] = useState("");
   const [about, setAbout] = useState("");
   const [aboutEmoji, setAboutEmoji] = useState("");
-
-  useEffect(() => {
-    setGivenName("");
-    setFamilyName("");
-    setAbout("");
-    setAboutEmoji("");
-  }, [selectedAccount]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
