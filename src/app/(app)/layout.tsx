@@ -1,20 +1,20 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, type ReactNode } from "react";
 import { useRouter } from "next/navigation";
 import { useServerConfig } from "@/contexts/server-config-context";
 
-export default function Home() {
+export default function AppLayout({ children }: { children: ReactNode }) {
   const { serverUrl } = useServerConfig();
   const router = useRouter();
 
   useEffect(() => {
-    if (serverUrl) {
-      router.replace("/dashboard");
-    } else {
+    if (!serverUrl) {
       router.replace("/settings");
     }
   }, [serverUrl, router]);
 
-  return null;
+  if (!serverUrl) return null;
+
+  return <>{children}</>;
 }
