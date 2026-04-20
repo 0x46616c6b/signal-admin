@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
+import { SetupGuard } from "@/components/setup/setup-guard";
 
 export default function AppLayout({ children }: { children: ReactNode }) {
-  return <>{children}</>;
+  return <SetupGuard>{children}</SetupGuard>;
 }

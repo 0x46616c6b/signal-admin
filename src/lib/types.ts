@@ -163,6 +163,10 @@ export interface Profile {
   aboutEmoji?: string;
 }
 
+export interface StartLinkResult {
+  deviceLinkUri: string;
+}
+
 export interface JsonRpcRequest {
   jsonrpc: "2.0";
   method: string;

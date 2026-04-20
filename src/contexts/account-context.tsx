@@ -17,6 +17,7 @@ interface AccountContextValue {
   setSelectedAccount: (number: string) => void;
   refreshAccounts: () => Promise<void>;
   isLoading: boolean;
+  hasLoaded: boolean;
 }
 
 const AccountContext = createContext<AccountContextValue | null>(null);
@@ -30,6 +31,7 @@ export function AccountProvider({ children }: { children: ReactNode }) {
     null,
   );
   const [isLoading, setIsLoading] = useState(false);
+  const [hasLoaded, setHasLoaded] = useState(false);
 
   const refreshAccounts = useCallback(async () => {
     setIsLoading(true);
@@ -48,6 +50,7 @@ export function AccountProvider({ children }: { children: ReactNode }) {
       setAccounts([]);
     } finally {
       setIsLoading(false);
+      setHasLoaded(true);
     }
   }, [rpcClient]);
 
@@ -70,6 +73,7 @@ export function AccountProvider({ children }: { children: ReactNode }) {
         setSelectedAccount,
         refreshAccounts,
         isLoading,
+        hasLoaded,
       }}
     >
       {children}
