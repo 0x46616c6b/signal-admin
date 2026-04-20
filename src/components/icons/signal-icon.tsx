@@ -1,0 +1,21 @@
+import { type SVGProps } from "react";
+
+export function SignalIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      viewBox="0 0 512 512"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <path
+        d="M256 0C114.615 0 0 114.615 0 256s114.615 256 256 256 256-114.615 256-256S397.385 0 256 0z"
+        fill="#3A76F0"
+      />
+      <path
+        d="M128.746 390.636l20.07-73.258A155.5 155.5 0 01120 242.5C120 167.561 181.061 106.5 256 106.5s136 61.061 136 136-61.061 136-136 136a135.39 135.39 0 01-69.038-18.856l-58.216 30.992z"
+        fill="#fff"
+      />
+    </svg>
+  );
+}
