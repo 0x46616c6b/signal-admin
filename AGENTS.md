@@ -57,3 +57,14 @@ The `account` param is required in multi-account mode and auto-injected by `useR
 - Error handling: use `toast.error()` from sonner for user-facing errors
 - TailwindCSS v4 — utility classes only, no `tailwind.config.ts` theme extensions, use `@theme inline` in `globals.css`
 - Icons: import from `lucide-react`
+
+## Pull Requests
+
+- Always open PRs as **draft**
+- Always add exactly one Release Drafter label to categorize the change for the changelog:
+  - `feature` or `enhancement` — new functionality or improvements
+  - `fix`, `bugfix`, or `bug` — bug fixes
+  - `chore`, `maintenance`, or `dependencies` — maintenance, refactoring, dependency updates
+- For version bumps, also add a semver label: `major`, `minor`, or `patch`
+  - `feature` implies `minor`, `fix`/`chore` implies `patch` by default (see `.github/release-drafter.yml`)
+- Use the PR template at `.github/PULL_REQUEST_TEMPLATE.md`
