@@ -1,20 +1,20 @@
-FROM node:22-alpine AS base
+FROM --platform=$BUILDPLATFORM node:22-alpine AS base
 
-# Stage 1: Install dependencies
+# Stage 1: Install dependencies (runs on host architecture)
 FROM base AS deps
 WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm ci
 
-# Stage 2: Build
+# Stage 2: Build (runs on host architecture, output is pure JS)
 FROM base AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 RUN npm run build
 
-# Stage 3: Production runner
-FROM base AS runner
+# Stage 3: Production runner (uses target platform)
+FROM node:22-alpine AS runner
 WORKDIR /app
 
 ENV NODE_ENV=production
