@@ -69,7 +69,7 @@ export default function ContactsPage() {
     <AppShell title="Contacts">
       <div className="space-y-4">
         <div className="flex items-center justify-between">
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-gray-500 dark:text-gray-400">
             {contacts?.length ?? 0} contacts
           </p>
           <button

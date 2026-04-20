@@ -7,7 +7,7 @@ export function ConnectionStatus() {
   const { isConnected, isChecking } = useServerConfig();
 
   return (
-    <div className="flex items-center gap-2 px-3 py-1.5 text-xs text-gray-500">
+    <div className="flex items-center gap-2 px-3 py-1.5 text-xs text-gray-500 dark:text-gray-400">
       <span
         className={cn(
           "h-2 w-2 rounded-full",

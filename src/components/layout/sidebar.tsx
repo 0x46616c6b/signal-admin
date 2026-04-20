@@ -46,18 +46,18 @@ export function Sidebar({ open, onClose }: SidebarProps) {
       )}
       <aside
         className={cn(
-          "fixed inset-y-0 left-0 z-50 flex w-60 flex-col border-r border-gray-200 bg-white transition-transform lg:static lg:translate-x-0",
+          "fixed inset-y-0 left-0 z-50 flex w-60 flex-col border-r border-gray-200 bg-white transition-transform dark:border-gray-700 dark:bg-gray-900 lg:static lg:translate-x-0",
           open ? "translate-x-0" : "-translate-x-full",
         )}
       >
-        <div className="flex h-14 items-center justify-between border-b border-gray-200 px-4">
-          <h1 className="flex items-center gap-2 text-lg font-semibold text-gray-900">
+        <div className="flex h-14 items-center justify-between border-b border-gray-200 px-4 dark:border-gray-700">
+          <h1 className="flex items-center gap-2 text-lg font-semibold text-gray-900 dark:text-gray-100">
             <SignalIcon className="h-6 w-6 shrink-0" />
             Signal Admin
           </h1>
           <button
             onClick={onClose}
-            className="rounded p-1 text-gray-400 hover:text-gray-600 lg:hidden"
+            className="rounded p-1 text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300 lg:hidden"
           >
             <X className="h-5 w-5" />
           </button>
@@ -75,8 +75,8 @@ export function Sidebar({ open, onClose }: SidebarProps) {
                     className={cn(
                       "flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors",
                       isActive
-                        ? "bg-blue-50 text-blue-700"
-                        : "text-gray-700 hover:bg-gray-100",
+                        ? "bg-blue-50 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400"
+                        : "text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800",
                     )}
                   >
                     <item.icon className="h-4 w-4 shrink-0" />
@@ -88,7 +88,7 @@ export function Sidebar({ open, onClose }: SidebarProps) {
           </ul>
         </nav>
 
-        <div className="border-t border-gray-200 p-3">
+        <div className="border-t border-gray-200 p-3 dark:border-gray-700">
           <ConnectionStatus />
         </div>
       </aside>

@@ -47,7 +47,7 @@ export default function DevicesPage() {
     <AppShell title="Devices">
       <div className="space-y-4">
         <div className="flex items-center justify-between">
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-gray-500 dark:text-gray-400">
             {devices?.length ?? 0} devices
           </p>
           <button

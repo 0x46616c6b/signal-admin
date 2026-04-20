@@ -38,12 +38,14 @@ export function SendForm({ onSend, onCancel }: SendFormProps) {
   };
 
   return (
-    <div className="rounded-lg border border-gray-200 bg-white p-4 shadow-sm">
+    <div className="rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-900">
       <div className="flex items-center justify-between mb-3">
-        <h3 className="text-sm font-medium text-gray-900">Send Message</h3>
+        <h3 className="text-sm font-medium text-gray-900 dark:text-gray-100">
+          Send Message
+        </h3>
         <button
           onClick={onCancel}
-          className="rounded p-1 text-gray-400 hover:text-gray-600"
+          className="rounded p-1 text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300"
         >
           <X className="h-4 w-4" />
         </button>
@@ -55,8 +57,8 @@ export function SendForm({ onSend, onCancel }: SendFormProps) {
             onClick={() => setRecipientType("individual")}
             className={`rounded-md px-3 py-1 text-xs font-medium ${
               recipientType === "individual"
-                ? "bg-blue-100 text-blue-700"
-                : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                ? "bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400"
+                : "bg-gray-100 text-gray-600 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700"
             }`}
           >
             Individual
@@ -66,8 +68,8 @@ export function SendForm({ onSend, onCancel }: SendFormProps) {
             onClick={() => setRecipientType("group")}
             className={`rounded-md px-3 py-1 text-xs font-medium ${
               recipientType === "group"
-                ? "bg-blue-100 text-blue-700"
-                : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                ? "bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400"
+                : "bg-gray-100 text-gray-600 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700"
             }`}
           >
             Group
@@ -76,7 +78,7 @@ export function SendForm({ onSend, onCancel }: SendFormProps) {
 
         {recipientType === "individual" ? (
           <div>
-            <label className="block text-xs font-medium text-gray-700">
+            <label className="block text-xs font-medium text-gray-700 dark:text-gray-300">
               Recipients (comma-separated)
             </label>
             <input
@@ -84,12 +86,12 @@ export function SendForm({ onSend, onCancel }: SendFormProps) {
               value={recipients}
               onChange={(e) => setRecipients(e.target.value)}
               placeholder="+49123456789, +49987654321"
-              className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-1.5 text-sm shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+              className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-1.5 text-sm shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100"
             />
           </div>
         ) : (
           <div>
-            <label className="block text-xs font-medium text-gray-700">
+            <label className="block text-xs font-medium text-gray-700 dark:text-gray-300">
               Group ID
             </label>
             <input
@@ -97,7 +99,7 @@ export function SendForm({ onSend, onCancel }: SendFormProps) {
               value={groupId}
               onChange={(e) => setGroupId(e.target.value)}
               placeholder="Group ID (base64)"
-              className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-1.5 text-sm shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+              className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-1.5 text-sm shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100"
             />
           </div>
         )}
@@ -119,7 +121,7 @@ export function SendForm({ onSend, onCancel }: SendFormProps) {
           <button
             type="button"
             onClick={onCancel}
-            className="rounded-md border border-gray-300 px-3 py-1.5 text-sm font-medium text-gray-700 hover:bg-gray-50"
+            className="rounded-md border border-gray-300 px-3 py-1.5 text-sm font-medium text-gray-700 hover:bg-gray-50 dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-800"
           >
             Cancel
           </button>

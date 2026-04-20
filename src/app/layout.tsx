@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { Toaster } from "sonner";
-import { ServerConfigProvider } from "@/contexts/server-config-context";
-import { AccountProvider } from "@/contexts/account-context";
+import { Providers } from "@/components/providers";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -20,6 +18,8 @@ export const metadata: Metadata = {
   description: "Admin interface for Signal CLI",
 };
 
+const themeScript = `(function(){var t=localStorage.getItem('signal-admin-theme')||'system';if(t==='dark'||(t==='system'&&window.matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.classList.add('dark')})()`;
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -28,15 +28,14 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="h-full bg-gray-50 text-gray-900 font-sans">
-        <ServerConfigProvider>
-          <AccountProvider>
-            {children}
-            <Toaster position="top-right" richColors />
-          </AccountProvider>
-        </ServerConfigProvider>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
+      <body className="h-full bg-gray-50 text-gray-900 font-sans dark:bg-gray-950 dark:text-gray-100">
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

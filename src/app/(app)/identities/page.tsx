@@ -35,7 +35,7 @@ export default function IdentitiesPage() {
           {Array.from({ length: 5 }).map((_, i) => (
             <div
               key={i}
-              className="h-16 animate-pulse rounded-lg bg-gray-200"
+              className="h-16 animate-pulse rounded-lg bg-gray-200 dark:bg-gray-700"
             />
           ))}
         </div>
@@ -46,12 +46,12 @@ export default function IdentitiesPage() {
   return (
     <AppShell title="Identities">
       <div className="space-y-4">
-        <p className="text-sm text-gray-500">
+        <p className="text-sm text-gray-500 dark:text-gray-400">
           {identities?.length ?? 0} identities
         </p>
 
         {!identities?.length ? (
-          <div className="rounded-lg border border-gray-200 bg-white p-8 text-center text-sm text-gray-500">
+          <div className="rounded-lg border border-gray-200 bg-white p-8 text-center text-sm text-gray-500 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-400">
             No identities found.
           </div>
         ) : (
@@ -64,10 +64,10 @@ export default function IdentitiesPage() {
               return (
                 <div
                   key={id}
-                  className="flex items-center justify-between rounded-lg border border-gray-200 bg-white p-4 shadow-sm"
+                  className="flex items-center justify-between rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-900"
                 >
                   <div className="flex items-center gap-3">
-                    <div className="rounded-md bg-gray-100 p-2">
+                    <div className="rounded-md bg-gray-100 p-2 dark:bg-gray-800">
                       {isTrusted ? (
                         <ShieldCheck className="h-5 w-5 text-green-600" />
                       ) : isUntrusted ? (
@@ -77,19 +77,19 @@ export default function IdentitiesPage() {
                       )}
                     </div>
                     <div>
-                      <p className="text-sm font-medium text-gray-900">
+                      <p className="text-sm font-medium text-gray-900 dark:text-gray-100">
                         {identity.number ?? identity.uuid ?? "Unknown"}
                       </p>
-                      <div className="flex gap-3 text-xs text-gray-500">
+                      <div className="flex gap-3 text-xs text-gray-500 dark:text-gray-400">
                         <span>
                           Trust:{" "}
                           <span
                             className={
                               isTrusted
-                                ? "text-green-600"
+                                ? "text-green-600 dark:text-green-400"
                                 : isUntrusted
-                                  ? "text-red-600"
-                                  : "text-gray-500"
+                                  ? "text-red-600 dark:text-red-400"
+                                  : "text-gray-500 dark:text-gray-400"
                             }
                           >
                             {identity.trustLevel ?? "Unknown"}
@@ -102,7 +102,7 @@ export default function IdentitiesPage() {
                         )}
                       </div>
                       {identity.safetyNumber && (
-                        <p className="mt-1 font-mono text-xs text-gray-400 break-all">
+                        <p className="mt-1 font-mono text-xs text-gray-400 break-all dark:text-gray-500">
                           {identity.safetyNumber}
                         </p>
                       )}
@@ -113,7 +113,7 @@ export default function IdentitiesPage() {
                       onClick={() =>
                         handleTrust(id)
                       }
-                      className="rounded-md border border-gray-300 px-3 py-1.5 text-xs font-medium text-gray-700 hover:bg-gray-50"
+                      className="rounded-md border border-gray-300 px-3 py-1.5 text-xs font-medium text-gray-700 hover:bg-gray-50 dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-800"
                     >
                       Trust
                     </button>
