@@ -135,10 +135,10 @@ export function RegisterFlow() {
     return (
       <div className="flex flex-col items-center gap-3 py-6">
         <CheckCircle className="h-12 w-12 text-green-500" />
-        <p className="text-sm font-medium text-gray-900">
+        <p className="text-sm font-medium text-gray-900 dark:text-gray-100">
           Account registered successfully!
         </p>
-        <p className="text-xs text-gray-500">Loading your account...</p>
+        <p className="text-xs text-gray-500 dark:text-gray-400">Loading your account...</p>
       </div>
     );
   }
@@ -146,13 +146,13 @@ export function RegisterFlow() {
   if (step === "verify") {
     return (
       <div className="space-y-4">
-        <p className="text-sm text-gray-700">
+        <p className="text-sm text-gray-700 dark:text-gray-300">
           A verification code has been sent to{" "}
           <strong>{phoneNumber}</strong>.
         </p>
 
         <div>
-          <label className="block text-xs font-medium text-gray-700">
+          <label className="block text-xs font-medium text-gray-700 dark:text-gray-300">
             Verification Code
           </label>
           <input
@@ -160,7 +160,7 @@ export function RegisterFlow() {
             value={verificationCode}
             onChange={(e) => setVerificationCode(e.target.value)}
             placeholder="123456"
-            className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-1.5 text-sm shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+            className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-1.5 text-sm shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100"
             autoFocus
           />
         </div>
@@ -176,7 +176,7 @@ export function RegisterFlow() {
                 setVerificationCode("");
                 setError(null);
               }}
-              className="inline-flex items-center gap-1 rounded-md border border-gray-300 px-3 py-1.5 text-sm font-medium text-gray-700 hover:bg-gray-50"
+              className="inline-flex items-center gap-1 rounded-md border border-gray-300 px-3 py-1.5 text-sm font-medium text-gray-700 hover:bg-gray-50 dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-800"
             >
               <ArrowLeft className="h-3.5 w-3.5" />
               Back
@@ -185,7 +185,7 @@ export function RegisterFlow() {
               type="button"
               onClick={handleResend}
               disabled={isLoading}
-              className="rounded-md border border-gray-300 px-3 py-1.5 text-sm font-medium text-gray-700 hover:bg-gray-50 disabled:opacity-50"
+              className="rounded-md border border-gray-300 px-3 py-1.5 text-sm font-medium text-gray-700 hover:bg-gray-50 disabled:opacity-50 dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-800"
             >
               Resend Code
             </button>
@@ -207,18 +207,18 @@ export function RegisterFlow() {
   if (step === "captcha") {
     return (
       <div className="space-y-4">
-        <p className="text-sm text-gray-700">
+        <p className="text-sm text-gray-700 dark:text-gray-300">
           Signal requires a captcha before sending the verification code.
         </p>
 
-        <ol className="list-decimal list-inside space-y-1.5 text-xs text-gray-600">
+        <ol className="list-decimal list-inside space-y-1.5 text-xs text-gray-600 dark:text-gray-400">
           <li>
             Open the captcha page:{" "}
             <a
               href={CAPTCHA_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-blue-600 hover:underline"
+              className="inline-flex items-center gap-1 text-blue-600 hover:underline dark:text-blue-400"
             >
               signalcaptchas.org
               <ExternalLink className="h-3 w-3" />
@@ -233,7 +233,7 @@ export function RegisterFlow() {
         </ol>
 
         <div>
-          <label className="block text-xs font-medium text-gray-700">
+          <label className="block text-xs font-medium text-gray-700 dark:text-gray-300">
             Captcha Token
           </label>
           <input
@@ -241,10 +241,10 @@ export function RegisterFlow() {
             value={captchaToken}
             onChange={(e) => setCaptchaToken(e.target.value)}
             placeholder="signalcaptcha://03AG... or just the token"
-            className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-1.5 text-sm shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+            className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-1.5 text-sm shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100"
             autoFocus
           />
-          <p className="mt-1 text-xs text-gray-500">
+          <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
             Paste the full <code>signalcaptcha://</code> link or just the token.
           </p>
         </div>

@@ -26,7 +26,7 @@ export function ContactList({
         {Array.from({ length: 5 }).map((_, i) => (
           <div
             key={i}
-            className="h-14 animate-pulse rounded-lg bg-gray-200"
+            className="h-14 animate-pulse rounded-lg bg-gray-200 dark:bg-gray-700"
           />
         ))}
       </div>
@@ -35,24 +35,24 @@ export function ContactList({
 
   if (!contacts.length) {
     return (
-      <div className="rounded-lg border border-gray-200 bg-white p-8 text-center text-sm text-gray-500">
+      <div className="rounded-lg border border-gray-200 bg-white p-8 text-center text-sm text-gray-500 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-400">
         No contacts found.
       </div>
     );
   }
 
   return (
-    <div className="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm">
-      <table className="min-w-full divide-y divide-gray-200">
-        <thead className="bg-gray-50">
+    <div className="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm dark:border-gray-700 dark:bg-gray-900">
+      <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+        <thead className="bg-gray-50 dark:bg-gray-800">
           <tr>
-            <th className="px-4 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+            <th className="px-4 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
               Name
             </th>
-            <th className="px-4 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+            <th className="px-4 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
               Number
             </th>
-            <th className="px-4 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+            <th className="px-4 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
               Status
             </th>
             <th className="px-4 py-3 text-right text-xs font-medium uppercase tracking-wider text-gray-500">
@@ -60,7 +60,7 @@ export function ContactList({
             </th>
           </tr>
         </thead>
-        <tbody className="divide-y divide-gray-200">
+        <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
           {contacts.map((contact) => {
             const id = contact.number ?? contact.uuid ?? "";
             const name =
@@ -71,20 +71,20 @@ export function ContactList({
               id;
 
             return (
-              <tr key={id} className="hover:bg-gray-50">
-                <td className="whitespace-nowrap px-4 py-3 text-sm font-medium text-gray-900">
+              <tr key={id} className="hover:bg-gray-50 dark:hover:bg-gray-800">
+                <td className="whitespace-nowrap px-4 py-3 text-sm font-medium text-gray-900 dark:text-gray-100">
                   {name}
                 </td>
-                <td className="whitespace-nowrap px-4 py-3 text-sm font-mono text-gray-500">
+                <td className="whitespace-nowrap px-4 py-3 text-sm font-mono text-gray-500 dark:text-gray-400">
                   {contact.number ?? "-"}
                 </td>
                 <td className="whitespace-nowrap px-4 py-3 text-sm">
                   {contact.blocked ? (
-                    <span className="inline-flex items-center rounded-full bg-red-100 px-2 py-0.5 text-xs font-medium text-red-700">
+                    <span className="inline-flex items-center rounded-full bg-red-100 px-2 py-0.5 text-xs font-medium text-red-700 dark:bg-red-900/30 dark:text-red-400">
                       Blocked
                     </span>
                   ) : (
-                    <span className="inline-flex items-center rounded-full bg-green-100 px-2 py-0.5 text-xs font-medium text-green-700">
+                    <span className="inline-flex items-center rounded-full bg-green-100 px-2 py-0.5 text-xs font-medium text-green-700 dark:bg-green-900/30 dark:text-green-400">
                       Active
                     </span>
                   )}
@@ -93,7 +93,7 @@ export function ContactList({
                   <div className="flex items-center justify-end gap-1">
                     <button
                       onClick={() => onEdit(contact)}
-                      className="rounded p-1 text-gray-400 hover:bg-gray-100 hover:text-gray-600"
+                      className="rounded p-1 text-gray-400 hover:bg-gray-100 hover:text-gray-600 dark:text-gray-500 dark:hover:bg-gray-800 dark:hover:text-gray-300"
                       title="Edit"
                     >
                       <Pencil className="h-4 w-4" />
@@ -101,7 +101,7 @@ export function ContactList({
                     {contact.blocked ? (
                       <button
                         onClick={() => onUnblock(id)}
-                        className="rounded p-1 text-gray-400 hover:bg-gray-100 hover:text-green-600"
+                        className="rounded p-1 text-gray-400 hover:bg-gray-100 hover:text-green-600 dark:text-gray-500 dark:hover:bg-gray-800"
                         title="Unblock"
                       >
                         <Unlock className="h-4 w-4" />
@@ -109,7 +109,7 @@ export function ContactList({
                     ) : (
                       <button
                         onClick={() => onBlock(id)}
-                        className="rounded p-1 text-gray-400 hover:bg-gray-100 hover:text-red-600"
+                        className="rounded p-1 text-gray-400 hover:bg-gray-100 hover:text-red-600 dark:text-gray-500 dark:hover:bg-gray-800"
                         title="Block"
                       >
                         <Ban className="h-4 w-4" />
@@ -117,7 +117,7 @@ export function ContactList({
                     )}
                     <button
                       onClick={() => onDelete(id)}
-                      className="rounded p-1 text-gray-400 hover:bg-gray-100 hover:text-red-600"
+                      className="rounded p-1 text-gray-400 hover:bg-gray-100 hover:text-red-600 dark:text-gray-500 dark:hover:bg-gray-800"
                       title="Delete"
                     >
                       <Trash2 className="h-4 w-4" />

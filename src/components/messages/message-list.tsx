@@ -10,7 +10,7 @@ interface MessageListProps {
 export function MessageList({ events }: MessageListProps) {
   if (!events.length) {
     return (
-      <div className="rounded-lg border border-gray-200 bg-white p-8 text-center text-sm text-gray-500">
+      <div className="rounded-lg border border-gray-200 bg-white p-8 text-center text-sm text-gray-500 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-400">
         No events received yet. Messages will appear here in real-time.
       </div>
     );

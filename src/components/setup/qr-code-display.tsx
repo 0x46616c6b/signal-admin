@@ -19,17 +19,17 @@ export function QrCodeDisplay({ uri }: QrCodeDisplayProps) {
 
   return (
     <div className="flex flex-col items-center gap-4">
-      <div className="rounded-lg border border-gray-200 bg-white p-4">
+      <div className="rounded-lg border border-gray-200 bg-white p-4 dark:border-gray-700">
         <QRCodeSVG value={uri} size={256} level="M" />
       </div>
       <div className="flex w-full items-center gap-2">
-        <code className="flex-1 truncate rounded-md border border-gray-200 bg-gray-50 px-3 py-1.5 text-xs text-gray-600">
+        <code className="flex-1 truncate rounded-md border border-gray-200 bg-gray-50 px-3 py-1.5 text-xs text-gray-600 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400">
           {uri}
         </code>
         <button
           type="button"
           onClick={handleCopy}
-          className="rounded-md border border-gray-300 p-1.5 text-gray-500 hover:bg-gray-50"
+          className="rounded-md border border-gray-300 p-1.5 text-gray-500 hover:bg-gray-50 dark:border-gray-600 dark:text-gray-400 dark:hover:bg-gray-800"
           title="Copy URI"
         >
           {copied ? (

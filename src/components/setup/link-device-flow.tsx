@@ -70,10 +70,10 @@ export function LinkDeviceFlow() {
     return (
       <div className="flex flex-col items-center gap-3 py-6">
         <CheckCircle className="h-12 w-12 text-green-500" />
-        <p className="text-sm font-medium text-gray-900">
+        <p className="text-sm font-medium text-gray-900 dark:text-gray-100">
           Device linked successfully!
         </p>
-        <p className="text-xs text-gray-500">Loading your account...</p>
+        <p className="text-xs text-gray-500 dark:text-gray-400">Loading your account...</p>
       </div>
     );
   }
@@ -82,10 +82,10 @@ export function LinkDeviceFlow() {
     return (
       <div className="space-y-4">
         <div className="space-y-2">
-          <p className="text-sm text-gray-700">
+          <p className="text-sm text-gray-700 dark:text-gray-300">
             Scan this QR code with your Signal app:
           </p>
-          <ol className="list-decimal list-inside space-y-1 text-xs text-gray-500">
+          <ol className="list-decimal list-inside space-y-1 text-xs text-gray-500 dark:text-gray-400">
             <li>Open Signal on your phone</li>
             <li>
               Go to <strong>Settings</strong> &rarr;{" "}
@@ -102,7 +102,7 @@ export function LinkDeviceFlow() {
         {deviceLinkUri && <QrCodeDisplay uri={deviceLinkUri} />}
 
         <div>
-          <label className="block text-xs font-medium text-gray-700">
+          <label className="block text-xs font-medium text-gray-700 dark:text-gray-300">
             Device Name
           </label>
           <input
@@ -110,7 +110,7 @@ export function LinkDeviceFlow() {
             value={deviceName}
             onChange={(e) => setDeviceName(e.target.value)}
             placeholder="signal-admin"
-            className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-1.5 text-sm shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+            className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-1.5 text-sm shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100"
           />
         </div>
 
@@ -122,7 +122,7 @@ export function LinkDeviceFlow() {
           <button
             type="button"
             onClick={handleRetry}
-            className="rounded-md border border-gray-300 px-3 py-1.5 text-sm font-medium text-gray-700 hover:bg-gray-50"
+            className="rounded-md border border-gray-300 px-3 py-1.5 text-sm font-medium text-gray-700 hover:bg-gray-50 dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-800"
           >
             Start Over
           </button>

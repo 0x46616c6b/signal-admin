@@ -36,7 +36,7 @@ export default function MessagesPage() {
       <div className="space-y-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="flex items-center gap-2 text-sm text-gray-500">
+            <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
               <Radio
                 className={cn(
                   "h-4 w-4",
@@ -45,7 +45,7 @@ export default function MessagesPage() {
               />
               {isConnected ? "Listening for events" : "SSE disconnected"}
             </div>
-            <span className="text-xs text-gray-400">
+            <span className="text-xs text-gray-400 dark:text-gray-500">
               {events.length} events
             </span>
           </div>
@@ -53,7 +53,7 @@ export default function MessagesPage() {
             {events.length > 0 && (
               <button
                 onClick={clear}
-                className="inline-flex items-center gap-1 rounded-md border border-gray-300 bg-white px-3 py-1.5 text-sm text-gray-700 hover:bg-gray-50"
+                className="inline-flex items-center gap-1 rounded-md border border-gray-300 bg-white px-3 py-1.5 text-sm text-gray-700 hover:bg-gray-50 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700"
               >
                 <Trash2 className="h-3 w-3" />
                 Clear

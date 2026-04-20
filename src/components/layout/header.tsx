@@ -6,6 +6,7 @@ import { toast } from "sonner";
 import { useAccounts } from "@/contexts/account-context";
 import { useServerConfig } from "@/contexts/server-config-context";
 import { ConfirmModal } from "@/components/ui/confirm-modal";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 interface HeaderProps {
   title: string;
@@ -42,20 +43,23 @@ export function Header({ title, onMenuClick }: HeaderProps) {
 
   return (
     <>
-      <header className="flex h-14 items-center gap-4 border-b border-gray-200 bg-white px-4">
+      <header className="flex h-14 items-center gap-4 border-b border-gray-200 bg-white px-4 dark:border-gray-700 dark:bg-gray-900">
         <button
           onClick={onMenuClick}
-          className="rounded p-1 text-gray-400 hover:text-gray-600 lg:hidden"
+          className="rounded p-1 text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300 lg:hidden"
         >
           <Menu className="h-5 w-5" />
         </button>
-        <h2 className="text-lg font-semibold text-gray-900">{title}</h2>
+        <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+          {title}
+        </h2>
         <div className="ml-auto flex items-center gap-2">
+          <ThemeToggle />
           {accounts.length > 1 && (
             <select
               value={selectedAccount ?? ""}
               onChange={(e) => setSelectedAccount(e.target.value)}
-              className="rounded-md border border-gray-300 bg-white px-3 py-1.5 text-sm text-gray-700 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+              className="rounded-md border border-gray-300 bg-white px-3 py-1.5 text-sm text-gray-700 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300"
             >
               {accounts.map((a) => (
                 <option key={a.number} value={a.number}>
@@ -65,12 +69,14 @@ export function Header({ title, onMenuClick }: HeaderProps) {
             </select>
           )}
           {accounts.length === 1 && (
-            <span className="text-sm text-gray-500">{accounts[0].number}</span>
+            <span className="text-sm text-gray-500 dark:text-gray-400">
+              {accounts[0].number}
+            </span>
           )}
           {selectedAccount && (
             <button
               onClick={() => setShowRemoveModal(true)}
-              className="rounded p-1 text-gray-400 hover:text-red-600"
+              className="rounded p-1 text-gray-400 hover:text-red-600 dark:text-gray-500 dark:hover:text-red-400"
               title="Remove account"
             >
               <Trash2 className="h-4 w-4" />

@@ -91,7 +91,7 @@ export default function GroupsPage() {
     <AppShell title="Groups">
       <div className="space-y-4">
         <div className="flex flex-wrap items-center gap-2 justify-between">
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-gray-500 dark:text-gray-400">
             {groups?.length ?? 0} groups
           </p>
           <div className="flex gap-2">
@@ -101,12 +101,12 @@ export default function GroupsPage() {
                 value={joinUri}
                 onChange={(e) => setJoinUri(e.target.value)}
                 placeholder="Invite link..."
-                className="rounded-md border border-gray-300 px-3 py-1.5 text-sm shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                className="rounded-md border border-gray-300 px-3 py-1.5 text-sm shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100"
               />
               <button
                 onClick={handleJoin}
                 disabled={!joinUri.trim()}
-                className="rounded-md border border-gray-300 bg-white px-3 py-1.5 text-sm font-medium text-gray-700 hover:bg-gray-50 disabled:opacity-50"
+                className="rounded-md border border-gray-300 bg-white px-3 py-1.5 text-sm font-medium text-gray-700 hover:bg-gray-50 disabled:opacity-50 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700"
               >
                 Join
               </button>
