@@ -1,4 +1,4 @@
-FROM --platform=$BUILDPLATFORM node:22-alpine AS base
+FROM --platform=$BUILDPLATFORM node:26-alpine AS base
 
 # Stage 1: Install dependencies (runs on host architecture)
 FROM base AS deps
@@ -14,7 +14,7 @@ COPY . .
 RUN npm run build
 
 # Stage 3: Production runner (uses target platform)
-FROM node:22-alpine AS runner
+FROM node:26-alpine AS runner
 WORKDIR /app
 
 ENV NODE_ENV=production
